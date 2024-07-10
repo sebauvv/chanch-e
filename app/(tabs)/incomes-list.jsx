@@ -53,10 +53,10 @@ const IncomesList = () => {
   const fetchAllIncomes = useCallback(async () => {
     setRefreshing(true);
     try {
-      const response = await fetch('http://192.168.0.19:3000/api/incomes');
+      const response = await fetch('https://chanch-e.onrender.com/api/incomes');
       const data = await response.json();
       setIncomes(data);
-      const totalAhorros = await fetch('http://192.168.0.19:3000/api/incomes/last');
+      const totalAhorros = await fetch('https://chanch-e.onrender.com/api/incomes/last');
       const totalData = await totalAhorros.json();
 
       const formattedAmount = `S/${Number(totalData.total_savings).toLocaleString('es-PE', { style: 'currency', currency: 'PEN', minimumFractionDigits: 2, maximumFractionDigits: 2 }).slice(3)}`;
@@ -79,7 +79,7 @@ const IncomesList = () => {
 
   const handleAccept = async () => {
     try {
-      const response = await fetch('http://192.168.0.19:3000/api/incomes/reset', {
+      const response = await fetch('https://chanch-e.onrender.com/api/incomes/reset', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

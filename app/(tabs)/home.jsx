@@ -11,7 +11,7 @@ const Home = () => {
   const fetchTotalSavings = useCallback(async () => {
     setRefreshing(true);
     try {
-      const response = await fetch('http://192.168.0.19:3000/api/incomes/last');
+      const response = await fetch('https://chanch-e.onrender.com/api/incomes/last');
       const data = await response.json();
       console.log(data);
       const formattedAmount = `S/${Number(data.total_savings).toLocaleString('es-PE', { style: 'currency', currency: 'PEN', minimumFractionDigits: 2, maximumFractionDigits: 2 }).slice(3)}`;
